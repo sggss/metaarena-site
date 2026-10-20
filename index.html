@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Мета Арена — компьютерный клуб в Пензе 24/7</title>
+<meta name="description" content="Компьютерный клуб «Мета Арена» в Пензе, ул. Измайлова, 67. Работаем 24/7. 40 ПК в трёх зонах, RTX 5060 Ti / 4070 SUPER, мониторы 240–280 Гц, PS5 с ТВ 65″ и 86″. Час от 150 ₽.">
+<meta name="theme-color" content="#070807">
+<meta property="og:title" content="Мета Арена — компьютерный клуб в Пензе 24/7">
+<meta property="og:description" content="40 игровых ПК, PS5-зоны, ранговая система с кешбэком до 20%. Пенза, Измайлова, 67.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23070807'/%3E%3Cpath d='M6 24V8l10 9 10-9v16' stroke='%2300ff66' stroke-width='3.4' fill='none' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/tektur-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/golostext-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">К содержимому</a>
+
+<header class="top">
+  <div class="wrap top__in">
+    <a class="logo" href="#main" aria-label="Мета Арена — на главную">МЕТА<i aria-hidden="true">»</i>АРЕНА</a>
+    <nav class="nav" id="nav" aria-label="Основное меню">
+      <a href="#prices">Цены</a>
+      <a href="#pc">Железо</a>
+      <a href="#ps5">PS5</a>
+      <a href="#calc">Калькулятор</a>
+      <a href="#ranks">Ранги</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="btn btn--sm top__call" href="tel:+79502331337">+7 950 233-13-37</a>
+    <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="hero__corner hero__corner--l" aria-hidden="true"></div>
+  <div class="hero__corner hero__corner--r" aria-hidden="true"></div>
+  <div class="wrap hero__in">
+    <p class="tag">Компьютерный клуб · Пенза</p>
+    <h1 class="hero__title">МЕТА<span aria-hidden="true">»</span>АРЕНА</h1>
+    <p class="hero__addr"><span class="pin" aria-hidden="true"></span>ул. Измайлова, 67</p>
+    <p class="lead">40 мощных компов в трёх зонах, PS5 с огромными телевизорами и ранговая система с кешбэком до 20%. Открыты круглосуточно — без перерывов и выходных.</p>
+    <div class="hero__cta">
+      <a class="btn" href="#prices">Смотреть цены</a>
+      <a class="btn btn--ghost" href="tel:+79502331337">Позвонить</a>
+    </div>
+    <ul class="stats">
+      <li><b>24/7</b><span>без выходных</span></li>
+      <li><b>40</b><span>игровых ПК</span></li>
+      <li><b>280 Гц</b><span>мониторы</span></li>
+      <li><b>5,0</b><span>рейтинг ВКонтакте</span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div class="ticker__in">
+  <span>RTX 5060 Ti 16GB</span><span>RTX 4070 SUPER</span><span>Ryzen 7 7700</span><span>HyperX</span><span>Logitech</span><span>Lunacy</span><span>Dark Project</span><span>DXRacer</span><span>Zone51</span><span>PS5 + TV 86″</span>
+  <span>RTX 5060 Ti 16GB</span><span>RTX 4070 SUPER</span><span>Ryzen 7 7700</span><span>HyperX</span><span>Logitech</span><span>Lunacy</span><span>Dark Project</span><span>DXRacer</span><span>Zone51</span><span>PS5 + TV 86″</span>
+</div></div>
+
+<section class="sec" id="prices">
+  <div class="wrap">
+    <header class="head"><p class="eyebrow">Прайс</p><h2>Цены на игровое время</h2></header>
+    <div class="seg" role="group" aria-label="Зона" id="zoneSeg"></div>
+    <div class="tariffs" id="tariffs" aria-live="polite"></div>
+    <details class="compare">
+      <summary>Сравнить все зоны</summary>
+      <div class="tablebox"><table id="compareTable"><caption class="sr">Цены по зонам</caption></table></div>
+    </details>
+    <p class="bonus"><b>+500 бонусов</b> за регистрацию для новых пользователей</p>
+    <noscript><p class="note">Включите JavaScript, чтобы увидеть цены, или позвоните: +7 950 233-13-37.</p></noscript>
+  </div>
+</section>
+
+<section class="sec sec--alt" id="pc">
+  <div class="wrap">
+    <header class="head"><p class="eyebrow">Наше железо</p><h2>Три зоны — три уровня</h2></header>
+    <div class="rigs" id="rigs"></div>
+  </div>
+</section>
+
+<section class="sec" id="ps5">
+  <div class="wrap">
+    <header class="head"><p class="eyebrow">PlayStation 5</p><h2>Консоли на большом экране</h2></header>
+    <div class="ps-intro">
+      <div class="ps-card"><b>4 × PS5</b><span>Геймерская зона с сочными телевизорами 65″</span></div>
+      <div class="ps-card"><b>3 VIP-зоны</b><span>PS5 с телевизорами 86″ и 360° акустикой</span></div>
+    </div>
+    <div class="tv" id="tv"></div>
+  </div>
+</section>
+
+<section class="sec sec--alt" id="calc">
+  <div class="wrap">
+    <header class="head"><p class="eyebrow">Калькулятор</p><h2>Сколько выйдет игра</h2></header>
+    <div class="calc">
+      <div class="calc__form">
+        <label for="cZone">Зона</label>
+        <select id="cZone"></select>
+        <label for="cHours">Часов: <output id="cOut" for="cHours">3</output></label>
+        <input type="range" id="cHours" min="1" max="12" value="3">
+        <div class="calc__marks" aria-hidden="true"><span>1</span><span>6</span><span>12</span></div>
+      </div>
+      <div class="calc__res" aria-live="polite">
+        <p class="calc__lab">Лучшая цена</p>
+        <p class="calc__sum" id="cSum">—</p>
+        <p class="calc__mix" id="cMix"></p>
+        <ul class="calc__hints" id="cHints"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="ranks">
+  <div class="wrap">
+    <header class="head"><p class="eyebrow">Ранговая система</p><h2>Играй больше — получай кешбэк</h2></header>
+    <p class="sub">Чем больше часов на аккаунте, тем выше ранг: растёт кешбэк бонусами и доля, которую можно оплатить бонусами.</p>
+    <div class="rankcalc">
+      <label for="rHours">Сколько часов у тебя на аккаунте?</label>
+      <div class="rankcalc__row">
+        <input type="number" id="rHours" min="0" max="99999" value="100" inputmode="numeric">
+        <div class="rankcalc__res" aria-live="polite" id="rRes"></div>
+      </div>
+      <div class="bar" aria-hidden="true"><i id="rBar"></i></div>
+      <p class="rankcalc__next" id="rNext"></p>
+    </div>
+    <div class="tablebox"><table class="ranks" id="rankTable">
+      <caption class="sr">Ранги, часы, кешбэк и процент списания бонусов</caption>
+      <thead><tr><th scope="col">Ранг</th><th scope="col">Часы</th><th scope="col">Кешбэк</th><th scope="col">Списание бонусами</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="sec sec--alt" id="contacts">
+  <div class="wrap contacts">
+    <div>
+      <header class="head"><p class="eyebrow">Контакты</p><h2>Ждём на арене</h2></header>
+      <ul class="clist">
+        <li><span>Адрес</span><b>Пенза, ул. Измайлова, 67</b></li>
+        <li><span>Режим работы</span><b><i class="live" aria-hidden="true"></i>Круглосуточно, 24/7</b></li>
+        <li><span>Телефон</span><a href="tel:+79502331337"><b>+7 (950) 233-13-37</b></a></li>
+        <li><span>ВКонтакте</span><a href="https://vk.ru/metapnz" target="_blank" rel="noopener"><b>vk.ru/metapnz</b></a><small>отвечаем примерно за 5 минут</small></li>
+      </ul>
+      <div class="hero__cta">
+        <a class="btn" href="https://yandex.ru/maps/?text=%D0%9F%D0%B5%D0%BD%D0%B7%D0%B0%2C%20%D1%83%D0%BB.%20%D0%98%D0%B7%D0%BC%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%B0%2C%2067" target="_blank" rel="noopener">Открыть на карте</a>
+        <a class="btn btn--ghost" href="https://vk.ru/metapnz" target="_blank" rel="noopener">Написать во ВК</a>
+      </div>
+    </div>
+    <div class="card24" aria-hidden="true">
+      <span class="card24__big">24/7</span>
+      <span class="card24__txt">Мы открыты всегда.<br>Ночью, утром, в праздники.</span>
+      <span class="card24__code">FOR GAMERS ONLY</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="logo logo--foot">МЕТА<i aria-hidden="true">»</i>АРЕНА</p>
+    <p>Компьютерный клуб в Пензе · ул. Измайлова, 67 · +7 (950) 233-13-37</p>
+    <p class="foot__legal">ИП Бондаренко А.Н. · ИНН 583712442337 · ОГРН 325580000070304</p>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="Быстрая связь">
+  <a href="tel:+79502331337">Позвонить</a>
+  <a href="https://vk.ru/metapnz" target="_blank" rel="noopener">ВКонтакте</a>
+</nav>
+
+<script src="app.js" defer></script>
+</body>
+</html>
