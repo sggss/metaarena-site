@@ -11,7 +11,7 @@
   --head:Tektur,"Arial Black",sans-serif;--body:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 }
 *{box-sizing:border-box;margin:0}
-html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%}
+html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top));-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--text);font:400 16px/1.6 var(--body);overflow-x:hidden}
 a{color:inherit}
 main{overflow:hidden;overflow:clip}
@@ -42,6 +42,7 @@ main{overflow:hidden;overflow:clip}
 .btn{--cut:12px;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 30px;background:var(--g);color:#031a0b;font:700 15px var(--head);letter-spacing:.04em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;clip-path:polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,var(--cut) 100%,0 calc(100% - var(--cut)));transition:background .2s,transform .2s}
 .btn::after{content:"»";font-size:1.2em;line-height:1}
 .btn:hover{background:#5dff9b;transform:translateY(-2px)}
+.btn:focus-visible,.dock a:focus-visible{outline:none;box-shadow:inset 0 0 0 3px #fff}
 .btn--ghost{background:var(--card2);color:var(--text);box-shadow:inset 0 0 0 1px #2f362f}
 .btn--ghost::after{color:var(--g)}
 .btn--ghost:hover{background:#232923}
@@ -135,6 +136,7 @@ td.num{font-weight:700}
 .ps-card{--cut:18px;padding:24px;background:var(--card2);display:flex;flex-direction:column;gap:4px;border-left:4px solid var(--g)}
 .ps-card b{font:800 28px var(--head);color:var(--g)}
 .ps-card span{color:#c3ccc3}
+.tv__title{font:800 20px var(--head);text-transform:uppercase;margin:34px 0 14px}
 .tv{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .tvc{--cut:18px;background:var(--card);padding:24px}
 .tvc h3{font:800 20px var(--head);text-transform:uppercase;margin-bottom:12px}
@@ -147,6 +149,7 @@ td.num{font-weight:700}
 /* calc */
 .calc{--cut:26px;display:grid;grid-template-columns:1fr 1fr;gap:24px;background:var(--card);padding:clamp(20px,4vw,40px)}
 .calc__form{display:flex;flex-direction:column;gap:10px}
+.calc__h{display:flex;gap:8px;align-items:baseline;font-weight:700;color:var(--mute);font-size:14px;margin-top:8px}
 .calc label{font-weight:700;color:var(--mute);font-size:14px;margin-top:8px}
 output{color:var(--g);font:800 18px var(--head)}
 select,input[type=number]{width:100%;min-height:52px;padding:0 16px;background:var(--bg);color:var(--text);border:1px solid #2c332c;font:600 16px var(--body);border-radius:0}
@@ -211,9 +214,10 @@ input[type=range]{width:100%;height:36px;accent-color:var(--g);background:transp
 }
 @media(max-width:860px){
   body{padding-bottom:calc(74px + env(safe-area-inset-bottom))}
+  html{scroll-padding-bottom:calc(84px + env(safe-area-inset-bottom))}
   .burger{display:flex}
   .top__call{display:none}
-  .nav{position:fixed;inset:calc(66px + env(safe-area-inset-top)) 0 auto;margin:0;flex-direction:column;gap:0;padding:6px 16px 18px;background:rgba(7,8,7,.97);border-bottom:1px solid var(--line);transform:translateY(-130%);visibility:hidden;transition:transform .3s,visibility .3s}
+  .nav{position:fixed;inset:calc(66px + env(safe-area-inset-top)) 0 auto;margin:0;flex-direction:column;gap:0;padding:6px 16px 18px;background:rgba(7,8,7,.97);border-bottom:1px solid var(--line);max-height:calc(100dvh - 66px - env(safe-area-inset-top));overflow-y:auto;transform:translateY(-130%);visibility:hidden;transition:transform .3s,visibility .3s;z-index:-1}
   .nav.open{transform:none;visibility:visible}
   .nav a{padding:15px 2px;font-size:17px;border-bottom:1px solid var(--line)}
   .calc,.contacts,.ps-intro,.tv{grid-template-columns:1fr}

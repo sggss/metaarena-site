@@ -17,6 +17,7 @@
 </head>
 <body>
 <a class="skip" href="#main">К содержимому</a>
+<noscript><p style="padding:90px 16px 0;text-align:center">Для цен, железа и калькулятора включите JavaScript. Телефон: +7 (950) 233-13-37.</p></noscript>
 
 <header class="top">
   <div class="wrap top__in">
@@ -41,7 +42,7 @@
   <div class="hero__corner hero__corner--r" aria-hidden="true"></div>
   <div class="wrap hero__in">
     <p class="tag">Компьютерный клуб · Пенза</p>
-    <h1 class="hero__title">МЕТА<span aria-hidden="true">»</span>АРЕНА</h1>
+    <h1 class="hero__title" aria-label="Мета Арена">МЕТА<span aria-hidden="true">»</span>АРЕНА</h1>
     <p class="hero__addr"><span class="pin" aria-hidden="true"></span>ул. Измайлова, 67</p>
     <p class="lead">40 мощных компов в трёх зонах, PS5 с огромными телевизорами и ранговая система с кешбэком до 20%. Открыты круглосуточно — без перерывов и выходных.</p>
     <div class="hero__cta">
@@ -66,7 +67,7 @@
   <div class="wrap">
     <header class="head"><p class="eyebrow">Прайс</p><h2>Цены на игровое время</h2></header>
     <div class="seg" role="group" aria-label="Зона" id="zoneSeg"></div>
-    <div class="tariffs" id="tariffs" aria-live="polite"></div>
+    <div class="tariffs" id="tariffs"></div>
     <details class="compare">
       <summary>Сравнить все зоны</summary>
       <div class="tablebox"><table id="compareTable"><caption class="sr">Цены по зонам</caption></table></div>
@@ -85,11 +86,12 @@
 
 <section class="sec" id="ps5">
   <div class="wrap">
-    <header class="head"><p class="eyebrow">PlayStation 5</p><h2>Консоли на большом экране</h2></header>
+    <header class="head"><p class="eyebrow">PlayStation 5 и TV</p><h2>Консоли на большом экране</h2></header>
     <div class="ps-intro">
       <div class="ps-card"><b>4 × PS5</b><span>Геймерская зона с сочными телевизорами 65″</span></div>
       <div class="ps-card"><b>3 VIP-зоны</b><span>PS5 с телевизорами 86″ и 360° акустикой</span></div>
     </div>
+    <h3 class="tv__title">Аренда TV</h3>
     <div class="tv" id="tv"></div>
   </div>
 </section>
@@ -101,13 +103,13 @@
       <div class="calc__form">
         <label for="cZone">Зона</label>
         <select id="cZone"></select>
-        <label for="cHours">Часов: <output id="cOut" for="cHours">3</output></label>
+        <div class="calc__h"><label for="cHours">Часов:</label> <output id="cOut" for="cHours">3</output></div>
         <input type="range" id="cHours" min="1" max="12" value="3">
-        <div class="calc__marks" aria-hidden="true"><span>1</span><span>6</span><span>12</span></div>
+        <div class="calc__marks" aria-hidden="true"><span>1</span><span>12</span></div>
       </div>
-      <div class="calc__res" aria-live="polite">
-        <p class="calc__lab">Лучшая цена</p>
-        <p class="calc__sum" id="cSum">—</p>
+      <div class="calc__res">
+        <p class="calc__lab">По пакетам</p>
+        <p class="calc__sum" id="cSum" aria-live="polite">—</p>
         <p class="calc__mix" id="cMix"></p>
         <ul class="calc__hints" id="cHints"></ul>
       </div>
@@ -153,7 +155,7 @@
     </div>
     <div class="card24" aria-hidden="true">
       <span class="card24__big">24/7</span>
-      <span class="card24__txt">Мы открыты всегда.<br>Ночью, утром, в праздники.</span>
+      <span class="card24__txt">Мы открыты 24/7.<br>Без перерывов и выходных!</span>
       <span class="card24__code">FOR GAMERS ONLY</span>
     </div>
   </div>

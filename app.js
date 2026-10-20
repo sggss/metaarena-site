@@ -3,15 +3,15 @@
 
   // Данные из группы ВКонтакте vk.ru/metapnz (прайс, «Наше железо», «Ранговая система»)
   var PC = [
-    { id: 'normal', name: 'Normal', lead: 'Основной зал',
+    { id: 'normal', name: 'Normal', lead: 'Мониторы 240 Гц',
       p: { 1: 150, 3: 400, 5: 600, morning: 350, night: 800 },
       spec: [['Мониторы', 'DELL 24.5″ 240 Гц'], ['Видеокарты', 'RTX 5060 Ti 16GB / RTX 3070'], ['Процессоры', 'Ryzen 5 7500F / Intel i7 10700KF'],
         ['RAM', '32GB / 16GB'], ['Клавиатуры', 'Dark Project Arena KD1'], ['Мыши', 'Logitech G102 Lightsync'], ['Наушники', 'HyperX Cloud II'], ['Кресла', 'DXRacer OH/RV131/NE']] },
-    { id: 'vip', name: 'VIP', lead: 'Больше экран, выше частота',
+    { id: 'vip', name: 'VIP', lead: 'Мониторы 27″ 280 Гц',
       p: { 1: 200, 3: 550, 5: 850, morning: 550, night: 1050 },
       spec: [['Мониторы', 'ASUS 27″ 280 Гц'], ['Видеокарты', 'RTX 5060 Ti 16GB'], ['Процессоры', 'Ryzen 5 7500F'], ['RAM', '32GB'],
         ['Клавиатуры', 'Dark Project KD87A Black'], ['Мыши', 'Logitech G403 Hero / HyperX Pulsefire Haste 2'], ['Наушники', 'HyperX Cloud II'], ['Кресла', 'DXRacer OH/RV131/NE']] },
-    { id: 'bootcamp', name: 'Bootcamp', lead: 'Топовое железо для команды', top: true,
+    { id: 'bootcamp', name: 'Bootcamp', lead: 'RTX 4070 SUPER · Ryzen 7 7700', top: true,
       p: { 1: 250, 3: 650, 5: 1100, morning: 800, night: 1200 },
       spec: [['Мониторы', 'ASUS 24.5″ 280 Гц'], ['Видеокарты', 'RTX 4070 SUPER'], ['Процессоры', 'Ryzen 7 7700'], ['RAM', '32GB'],
         ['Клавиатуры', 'Dark Project KD83A'], ['Мыши', 'Lunacy One White'], ['Наушники', 'HyperX Cloud II S'], ['Кресла', 'Zone51 Imperial']] }
@@ -50,7 +50,7 @@
     var z = PC.filter(function (x) { return x.id === current; })[0];
     $('tariffs').innerHTML = PACKS.map(function (pk) {
       var v = z.p[pk.k], per = Math.round(v / pk.h);
-      return '<div class="tariff cut' + (pk.badge ? ' tariff--time" data-badge="' + pk.badge : '') + '">' +
+      return '<div class="tariff cut' + (pk.badge ? ' tariff--time' : '') + '">' +
         '<span class="tariff__n">' + pk.name + '</span><span class="tariff__t">' + pk.t + (pk.badge ? ' · ' + pk.h + ' ч' : '') + '</span>' +
         '<span class="tariff__p">' + price(v) + '</span>' +
         '<span class="tariff__h">' + (pk.h > 1 ? '≈ ' + rub(per) + ' / час' : 'за час игры') + '</span></div>';
@@ -80,16 +80,15 @@
 
   // PS5 / TV
   $('tv').innerHTML = TV.map(function (t) {
-    var parts = t.name.split('TV');
-    return '<article class="tvc cut"><h3>' + parts[0] + '<span>TV' + parts[1] + '</span></h3><ul>' +
-      PACKS.slice(0, 3).map(function (pk) { return '<li><span>' + pk.name + ' · ' + pk.t + '</span><b>' + rub(t.p[pk.k]) + '</b></li>'; }).join('') +
+    return '<article class="tvc cut"><h3>' + t.name.replace('Аренда ', '').replace('TV', '<span>TV</span>') + '</h3><ul>' +
+      PACKS.slice(0, 3).map(function (pk) { return '<li><span>' + pk.t + '</span><b>' + rub(t.p[pk.k]) + '</b></li>'; }).join('') +
       '</ul></article>';
   }).join('');
 
   // Калькулятор: минимальная стоимость набора пакетов 1/3/5 ч, покрывающих нужное время
   var cZone = $('cZone'), cHours = $('cHours');
   cZone.innerHTML = '<optgroup label="Компьютеры">' + PC.map(function (z) { return '<option value="' + z.id + '">' + z.name + '</option>'; }).join('') +
-    '</optgroup><optgroup label="PlayStation 5">' + TV.map(function (z) { return '<option value="' + z.id + '">' + z.name + '</option>'; }).join('') + '</optgroup>';
+    '</optgroup><optgroup label="Аренда TV">' + TV.map(function (z) { return '<option value="' + z.id + '">' + z.name + '</option>'; }).join('') + '</optgroup>';
 
   function best(p, need) {
     var packs = [1, 3, 5], max = need + 4, dp = [0], pick = [0], i, k;
@@ -104,7 +103,7 @@
     for (i = need + 1; i <= max; i++) if (dp[i] < dp[at]) at = i;
     var cnt = { 1: 0, 3: 0, 5: 0 }, left = at;
     while (left > 0) { cnt[pick[left]]++; left = Math.max(0, left - pick[left]); }
-    return { cost: dp[at], cnt: cnt, hours: at };
+    return { cost: dp[at], cnt: cnt };
   }
 
   function calc() {
@@ -114,9 +113,13 @@
     $('cSum').textContent = rub(r.cost);
     $('cMix').textContent = [5, 3, 1].filter(function (h) { return r.cnt[h]; }).map(function (h) {
       return PACKS.filter(function (pk) { return pk.k === h; })[0].name + (r.cnt[h] > 1 ? ' × ' + r.cnt[h] : '');
-    }).join(' + ') + (r.hours > need ? ' — ' + r.hours + ' ч дешевле, чем ' + need : '');
-    if (z.p.morning && need <= 6 && z.p.morning < r.cost) hints.push('Играешь с 08:00 до 14:00? «Кибер утро» — ' + rub(z.p.morning) + ' за 6 часов.');
-    if (z.p.night && need <= 8 && z.p.night < r.cost) hints.push('Ночью выгоднее «Кибер ночь» — ' + rub(z.p.night) + ' с 00:00 до 08:00.');
+    }).join(' + ');
+    cHours.setAttribute('aria-valuetext', need + ' ч');
+    [['morning', 6, 'С 08:00 до 14:00', 'Кибер утро'], ['night', 8, 'С 00:00 до 08:00', 'Кибер ночь']].forEach(function (s) {
+      if (!z.p[s[0]]) return;
+      var rest = need > s[1] ? best(z.p, need - s[1]) : null, cost = z.p[s[0]] + (rest ? rest.cost : 0);
+      if (cost < r.cost) hints.push(s[2] + ' выгоднее «' + s[3] + '»' + (rest ? ' + ещё ' + (need - s[1]) + ' ч' : '') + ' — ' + rub(cost) + '.');
+    });
     $('cHints').innerHTML = hints.map(function (h) { return '<li>' + h + '</li>'; }).join('');
   }
   cZone.addEventListener('change', calc);
